@@ -131,16 +131,10 @@ game.CollisionSolver.inject({
 	                var vAxNew = (velA.x * (a_mass - b_mass) + 2 * b_mass * velB.x) / (a_mass + b_mass);
 	                var vBxNew = (velB.x * (a_mass - b_mass) + 2 * b_mass * velA.x) / (a_mass + b_mass);
 	
-	                console.log(vAxNew, vBxNew);
 	                velA.x = vAxNew * restitution;
 	                velB.x = vBxNew * restitution;
 	                a.velocity = velA.rotate(baseAngle);
 	                b.velocity = velB.rotate(baseAngle);
-	                //this.seperateBodies(a, b);
-	
-	                console.log("final velocity");
-	                console.log(a.velocity);
-	                console.log(b.velocity);
 	            }
 	            this.seperateBodies(a, b);
 	            return true;
@@ -185,7 +179,6 @@ game.CollisionSolver.inject({
 	    if (a.shape instanceof game.Circle && b.shape instanceof game.Circle) {
 	        // circle <=> circle
 	        distanceTouch = a.shape.radius + b.shape.radius;
-	        console.log(1 - distanceBW.length() / distanceTouch);
 	        overlap = new game.Vector().copy(distanceBW).multiply(1 - distanceBW.length() / distanceTouch);
 	        a.position.x -= overlap.x / 2;
 	        a.position.y -= overlap.y / 2;
